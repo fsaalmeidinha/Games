@@ -1,0 +1,161 @@
+﻿<!--https://openclipart.org/detail/202285/bow-and-arrow-by-monsterbraingames-202285-->
+<!--http://examples.phaser.io/-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Archery!</title>
+    <script src="../phaser/phaser.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        var game;
+
+        window.onload = function () {
+            var maxVelocity = 450;
+            var minVelocity = 150;
+            var arrowVelocity = 250;
+            var arrowVelocityInterval = 5;
+            var arrow;
+            var bow;
+            var tronco_arqueiro;
+            var shootedArrows = [];
+            var isMousePressed = false;
+            var increaseVelocity = true;
+
+            game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+            //            var arrow;
+
+            function preload() {
+                game.load.image('sky', 'imgs/sky.png');
+                game.load.image('arrow', 'imgs/arrow.png');
+                game.load.image('bow', 'imgs/bow.png');
+                game.load.image('tronco_arqueiro', 'imgs/tronco_arqueiro.png');
+                game.load.image('pernas_arqueiro', 'imgs/pernas_arqueiro.png');
+            }
+
+            function create() {
+                game.add.sprite(0, 0, 'sky');
+                createArrow();
+
+                bow = game.add.sprite(50, 295, 'bow');
+                game.physics.arcade.enable(bow);
+                bow.anchor.setTo(0, 0.5);
+
+                tronco_arqueiro = game.add.sprite(2, 285, 'tronco_arqueiro');
+                game.add.sprite(2, 325, 'pernas_arqueiro');
+                game.physics.arcade.enable(tronco_arqueiro);
+                tronco_arqueiro.anchor.setTo(0, 0.5);
+
+                game.input.onDown.add(mouseDown, this);
+                game.input.onUp.add(mouseUp, this);
+            }
+
+            function update() {
+                updateArrowAndBowAngleAccordingToPointer();
+                updateArrowAngleAfterShooting();
+
+                if (isMousePressed) {
+                    actualizeArrowVelocity();
+                }
+            }
+
+            function createArrow() {
+                arrow = game.add.sprite(50, 300, 'arrow');
+                game.physics.arcade.enable(arrow);
+                arrow.anchor.setTo(0, 0.5);
+            }
+
+            function mouseDown(pointer) {
+                //                game.debug.text('a tan: ' + pointer.x, 32, 232);
+                //                arrow.body.velocity.x = 300;
+                //                arrow.body.velocity.y = -200;
+
+                arrowVelocity = 250;
+                increaseVelocity = true;
+                isMousePressed = true;
+            }
+
+            function mouseUp(pointer) {
+                isMousePressed = false;
+                //                updateArrowAndBowAngle = updateArrowAngleAfterShooting;
+
+                var targetAngle = game.math.angleBetween(
+                arrow.x, arrow.y,
+                game.input.activePointer.x, game.input.activePointer.y);
+                arrow.rotation = targetAngle;
+
+                arrow.body.gravity.y = 100;
+                arrow.body.velocity = game.physics.arcade.velocityFromAngle(arrow.angle, arrowVelocity);
+                arrow.anchor.setTo(0.5, 0.5);
+                shootedArrows.push(arrow);
+                createArrow();
+            }
+
+            function actualizeArrowVelocity() {
+                if (increaseVelocity) {
+                    if (arrowVelocity >= maxVelocity) {
+                        increaseVelocity = false;
+                        actualizeArrowVelocity();
+                    }
+                    else {
+                        arrowVelocity += arrowVelocityInterval;
+                    }
+                }
+                else {
+                    if (arrowVelocity <= minVelocity) {
+                        increaseVelocity = true;
+                        actualizeArrowVelocity();
+                    }
+                    else {
+                        arrowVelocity -= arrowVelocityInterval;
+                    }
+                }
+
+                game.debug.text('arrow velocity: ' + arrowVelocity, 32, 232);
+            }
+
+            function updateArrowAndBowAngleAccordingToPointer() {
+                var targetAngle = game.math.angleBetween(
+                tronco_arqueiro.x, tronco_arqueiro.y,
+                game.input.activePointer.x, game.input.activePointer.y);
+
+                arrow.rotation = targetAngle;
+                bow.rotation = targetAngle;
+                tronco_arqueiro.rotation = targetAngle;
+
+                var piRadRotation = tronco_arqueiro.body.rotation * (Math.PI / 180);
+                var deslocamentoX = Math.cos(piRadRotation) * 25;
+                var deslocamentoY = Math.sin(piRadRotation) * 25;
+                arrow.x = tronco_arqueiro.x + deslocamentoX;
+                arrow.y = tronco_arqueiro.y + deslocamentoY + 7;
+                bow.x = tronco_arqueiro.x + deslocamentoX;
+                bow.y = tronco_arqueiro.y + deslocamentoY + 4;
+            };
+
+            function updateArrowAngleAfterShooting() {
+                $(shootedArrows).each(function (ind, shootedArrow) {
+                    if (shootedArrow.y > 600) {
+                        game.debug.text('arrow velocity: ', 32, 232);
+                        shootedArrow.kill;
+                    }
+                    else {
+                        var aTan = Math.atan2(shootedArrow.body.velocity.y, shootedArrow.body.velocity.x);
+                        //                game.debug.text('a tan: ' + aTan, 32, 232);
+                        //                arrow.rotation = arrow.angle;
+
+
+                        var targetAngle = game.math.angleBetween(
+                shootedArrow.body.velocity.x, shootedArrow.body.velocity.y,
+                shootedArrow.x, shootedArrow.y);
+                        shootedArrow.rotation = aTan;
+                    }
+                });
+            };
+        };
+
+    </script>
+</body>
+</html>

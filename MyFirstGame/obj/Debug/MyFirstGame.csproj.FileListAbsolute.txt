@@ -1,0 +1,5 @@
+c:\users\felipe\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\bin\MyFirstGame.dll
+c:\users\felipe\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\bin\MyFirstGame.pdb
+c:\users\felipe\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\obj\Debug\MyFirstGame.dll
+c:\users\felipe\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\obj\Debug\MyFirstGame.pdb
+C:\Users\FELIPE\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\obj\Debug\MyFirstGame.csprojResolveAssemblyReference.cache
