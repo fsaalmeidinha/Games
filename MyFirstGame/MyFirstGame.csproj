@@ -52,8 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Archery\Game.htm" />
+    <Content Include="Archery\imgs\arqueiro.png" />
     <Content Include="Archery\imgs\arrow.png" />
+    <Content Include="Archery\imgs\bow.png" />
+    <Content Include="Archery\imgs\bow_and_arrow.png" />
+    <Content Include="Archery\imgs\pernas_arqueiro.png" />
     <Content Include="Archery\imgs\sky.png" />
+    <Content Include="Archery\imgs\tronco_arqueiro.png" />
     <Content Include="HelloPhaser\HelloPhaser.htm" />
     <Content Include="HelloPhaser\imgs\boneco.png" />
     <Content Include="HelloPhaser\imgs\dude.png" />
