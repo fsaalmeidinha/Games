@@ -3,3 +3,8 @@ c:\users\felipe\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\bi
 c:\users\felipe\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\obj\Debug\MyFirstGame.dll
 c:\users\felipe\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\obj\Debug\MyFirstGame.pdb
 C:\Users\FELIPE\documents\visual studio 2010\Projects\MyFirstGame\MyFirstGame\obj\Debug\MyFirstGame.csprojResolveAssemblyReference.cache
+D:\!job\Games\MyFirstGame\bin\MyFirstGame.dll
+D:\!job\Games\MyFirstGame\bin\MyFirstGame.pdb
+D:\!job\Games\MyFirstGame\obj\Debug\MyFirstGame.csprojResolveAssemblyReference.cache
+D:\!job\Games\MyFirstGame\obj\Debug\MyFirstGame.dll
+D:\!job\Games\MyFirstGame\obj\Debug\MyFirstGame.pdb

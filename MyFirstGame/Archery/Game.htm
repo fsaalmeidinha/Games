@@ -14,16 +14,18 @@
         var game;
 
         window.onload = function () {
-            var maxVelocity = 450;
+            var cursors;
+            var maxVelocity = 486;
             var minVelocity = 150;
-            var arrowVelocity = 250;
-            var arrowVelocityInterval = 5;
+            var arrowVelocity = minVelocity;
+            var arrowVelocityInterval = 4;
             var arrow;
             var bow;
             var tronco_arqueiro;
             var shootedArrows = [];
             var isMousePressed = false;
             var increaseVelocity = true;
+            var strength;
 
             game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
             //            var arrow;
@@ -34,6 +36,8 @@
                 game.load.image('bow', 'imgs/bow.png');
                 game.load.image('tronco_arqueiro', 'imgs/tronco_arqueiro.png');
                 game.load.image('pernas_arqueiro', 'imgs/pernas_arqueiro.png');
+                game.load.image('strength_bar', 'imgs/strength_bar.png');
+                game.load.image('strength', 'imgs/strength.png');
             }
 
             function create() {
@@ -49,8 +53,27 @@
                 game.physics.arcade.enable(tronco_arqueiro);
                 tronco_arqueiro.anchor.setTo(0, 0.5);
 
-                game.input.onDown.add(mouseDown, this);
-                game.input.onUp.add(mouseUp, this);
+                game.input.mouse.onMouseDown = mouseDown;
+                game.input.mouse.onMouseUp = mouseUp;
+
+                cursors = game.input.keyboard.createCursorKeys();
+
+                var bowY = bow.body.y;
+                //Ystrength_box_distanceFromBow
+                var strength_bar = game.add.sprite(10, 10, 'strength_bar');
+                strength = game.add.sprite(14, 15, 'strength');
+                var strength_text = game.add.text(32, 15, 'Strength', { font: "11px Arial", fill: "black", align: "center" });
+            }
+
+            function handlePlayerMovement() {
+                if (cursors.up.isDown) {
+                    arrow.body.y = arrow.body.y - 5;
+                    bow.body.y = bow.body.y - 5;
+                }
+                else if (cursors.down.isDown) {
+                    arrow.body.y = arrow.body.y + 5;
+                    bow.body.y += bow.body.y - 5;
+                }
             }
 
             function update() {
@@ -59,6 +82,9 @@
 
                 if (isMousePressed) {
                     actualizeArrowVelocity();
+                }
+                else {
+                    handlePlayerMovement();
                 }
             }
 
@@ -73,7 +99,7 @@
                 //                arrow.body.velocity.x = 300;
                 //                arrow.body.velocity.y = -200;
 
-                arrowVelocity = 250;
+                arrowVelocity = minVelocity;
                 increaseVelocity = true;
                 isMousePressed = true;
             }
@@ -92,6 +118,7 @@
                 arrow.anchor.setTo(0.5, 0.5);
                 shootedArrows.push(arrow);
                 createArrow();
+                strength.scale.setTo(0, 1);
             }
 
             function actualizeArrowVelocity() {
@@ -114,7 +141,8 @@
                     }
                 }
 
-                game.debug.text('arrow velocity: ' + arrowVelocity, 32, 232);
+                var strengthScale = ((arrowVelocity - minVelocity) / 4);
+                strength.scale.setTo(strengthScale, 1);
             }
 
             function updateArrowAndBowAngleAccordingToPointer() {
@@ -138,7 +166,6 @@
             function updateArrowAngleAfterShooting() {
                 $(shootedArrows).each(function (ind, shootedArrow) {
                     if (shootedArrow.y > 600) {
-                        game.debug.text('arrow velocity: ', 32, 232);
                         shootedArrow.kill;
                     }
                     else {
