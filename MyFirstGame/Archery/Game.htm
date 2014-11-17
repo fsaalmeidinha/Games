@@ -18,14 +18,17 @@
             var maxVelocity = 486;
             var minVelocity = 150;
             var arrowVelocity = minVelocity;
-            var arrowVelocityInterval = 4;
+            var arrowVelocityInterval = 8;
             var arrow;
             var bow;
             var tronco_arqueiro;
+            var pernas_arqueiro;
             var shootedArrows = [];
             var isMousePressed = false;
             var increaseVelocity = true;
             var strength;
+            var minPosY = 50;
+            var maxPosY = 500;
 
             game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
             //            var arrow;
@@ -49,7 +52,7 @@
                 bow.anchor.setTo(0, 0.5);
 
                 tronco_arqueiro = game.add.sprite(5, 290, 'tronco_arqueiro');
-                game.add.sprite(2, 325, 'pernas_arqueiro');
+                pernas_arqueiro = game.add.sprite(2, 325, 'pernas_arqueiro');
                 game.physics.arcade.enable(tronco_arqueiro);
                 tronco_arqueiro.anchor.setTo(0, 0.5);
 
@@ -67,12 +70,16 @@
 
             function handlePlayerMovement() {
                 if (cursors.up.isDown) {
-                    arrow.body.y = arrow.body.y - 5;
-                    bow.body.y = bow.body.y - 5;
+                    if (tronco_arqueiro.y > minPosY) {
+                        tronco_arqueiro.y -= 5;
+                        pernas_arqueiro.y -= 5;
+                    }
                 }
                 else if (cursors.down.isDown) {
-                    arrow.body.y = arrow.body.y + 5;
-                    bow.body.y += bow.body.y - 5;
+                    if (tronco_arqueiro.y < maxPosY) {
+                        tronco_arqueiro.y += 5;
+                        pernas_arqueiro.y += 5;
+                    }
                 }
             }
 
@@ -113,7 +120,7 @@
                 game.input.activePointer.x, game.input.activePointer.y);
                 arrow.rotation = targetAngle;
 
-                arrow.body.gravity.y = 100;
+                arrow.body.gravity.y = 80;
                 arrow.body.velocity = game.physics.arcade.velocityFromAngle(arrow.angle, arrowVelocity);
                 arrow.anchor.setTo(0.5, 0.5);
                 shootedArrows.push(arrow);
