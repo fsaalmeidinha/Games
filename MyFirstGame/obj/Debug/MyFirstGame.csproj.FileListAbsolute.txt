@@ -8,3 +8,13 @@ D:\!job\Games\MyFirstGame\bin\MyFirstGame.pdb
 D:\!job\Games\MyFirstGame\obj\Debug\MyFirstGame.csprojResolveAssemblyReference.cache
 D:\!job\Games\MyFirstGame\obj\Debug\MyFirstGame.dll
 D:\!job\Games\MyFirstGame\obj\Debug\MyFirstGame.pdb
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\arqueiro.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\arrow.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\balao_azul.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\bow.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\bow_and_arrow.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\pernas_arqueiro.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\sky.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\strength.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\strength_bar.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\tronco_arqueiro.png

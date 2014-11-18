@@ -52,15 +52,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Archery\Game.htm" />
-    <Content Include="Archery\imgs\arqueiro.png" />
-    <Content Include="Archery\imgs\arrow.png" />
-    <Content Include="Archery\imgs\bow.png" />
-    <Content Include="Archery\imgs\bow_and_arrow.png" />
-    <Content Include="Archery\imgs\pernas_arqueiro.png" />
-    <Content Include="Archery\imgs\sky.png" />
-    <Content Include="Archery\imgs\strength.png" />
-    <Content Include="Archery\imgs\strength_bar.png" />
-    <Content Include="Archery\imgs\tronco_arqueiro.png" />
+    <Content Include="Archery\imgs\arqueiro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\balao_azul.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\bow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\bow_and_arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\pernas_arqueiro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\sky.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\strength.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\strength_bar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archery\imgs\tronco_arqueiro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelloPhaser\HelloPhaser.htm" />
     <Content Include="HelloPhaser\imgs\boneco.png" />
     <Content Include="HelloPhaser\imgs\dude.png" />
