@@ -67,6 +67,9 @@
     <Content Include="Archery\imgs\bow_and_arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Archery\imgs\explosao_balao.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Archery\imgs\pernas_arqueiro.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

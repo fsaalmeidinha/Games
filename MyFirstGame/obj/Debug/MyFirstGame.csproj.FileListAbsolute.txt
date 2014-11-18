@@ -18,3 +18,4 @@ D:\!job\Games\MyFirstGame\bin\Archery\imgs\sky.png
 D:\!job\Games\MyFirstGame\bin\Archery\imgs\strength.png
 D:\!job\Games\MyFirstGame\bin\Archery\imgs\strength_bar.png
 D:\!job\Games\MyFirstGame\bin\Archery\imgs\tronco_arqueiro.png
+D:\!job\Games\MyFirstGame\bin\Archery\imgs\explosao_balao.png
