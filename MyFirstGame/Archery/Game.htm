@@ -91,8 +91,10 @@
                 game.physics.arcade.enable(tronco_arqueiro);
                 tronco_arqueiro.anchor.setTo(0, 0.5);
 
-                game.input.mouse.onMouseDown = mouseDown;
-                game.input.mouse.onMouseUp = mouseUp;
+                //                game.input.mouse.onMouseDown = mouseDown;
+                //                game.input.mouse.onMouseUp = mouseUp;
+                game.input.onDown.add(mouseDown, this);
+                game.input.onUp.add(mouseUp, this);
 
                 cursors = game.input.keyboard.createCursorKeys();
 
