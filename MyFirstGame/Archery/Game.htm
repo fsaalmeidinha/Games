@@ -23,12 +23,16 @@
             var bow;
             var tronco_arqueiro;
             var pernas_arqueiro;
-            var shootedArrows = [];
             var isMousePressed = false;
             var increaseVelocity = true;
             var strength;
             var minPosY = 50;
             var maxPosY = 500;
+            var baloes;
+            var shootedArrows;
+            var score = 0;
+            var score_text;
+            var baloesPerdidos = 0;
 
             game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
             //            var arrow;
@@ -41,9 +45,12 @@
                 game.load.image('pernas_arqueiro', 'imgs/pernas_arqueiro.png');
                 game.load.image('strength_bar', 'imgs/strength_bar.png');
                 game.load.image('strength', 'imgs/strength.png');
+                game.load.image('balao_azul', 'imgs/balao_azul.png');
             }
 
             function create() {
+                game.physics.setBoundsToWorld();
+
                 game.add.sprite(0, 0, 'sky');
                 createArrow();
 
@@ -61,11 +68,21 @@
 
                 cursors = game.input.keyboard.createCursorKeys();
 
-                var bowY = bow.body.y;
-                //Ystrength_box_distanceFromBow
-                var strength_bar = game.add.sprite(10, 10, 'strength_bar');
-                strength = game.add.sprite(14, 15, 'strength');
-                var strength_text = game.add.text(32, 15, 'Strength', { font: "11px Arial", fill: "black", align: "center" });
+                scoreText = game.add.text(16, 16, 'Score: ' + score + '/' + baloesPerdidos, { fontSize: '10px', fill: '#000' });
+
+                game.add.sprite(10, 40, 'strength_bar');
+                strength = game.add.sprite(14, 45, 'strength');
+                game.add.text(32, 45, 'Strength', { font: "11px Arial", fill: "black", align: "center" });
+
+
+                shootedArrows = game.add.group();
+
+
+                baloes = game.add.group();
+                baloes.enableBody = true;
+                //                baloes.create(300 * Math.random() + 450, 500 * Math.random() + 50, 'balao_azul');
+
+                game.time.events.loop(Phaser.Timer.SECOND * 1, adicionarBalao, this);
             }
 
             function handlePlayerMovement() {
@@ -93,12 +110,17 @@
                 else {
                     handlePlayerMovement();
                 }
+
+                game.physics.arcade.overlap(shootedArrows, baloes, explodirBalao, null, this);
+                scoreText.text = 'Score: ' + score + '/' + baloesPerdidos;
             }
 
             function createArrow() {
                 arrow = game.add.sprite(50, 300, 'arrow');
                 game.physics.arcade.enable(arrow);
                 arrow.anchor.setTo(0, 0.5);
+                arrow.checkWorldBounds = true;
+                arrow.events.onOutOfBounds.add(removerElementosForaDaTela, this);
             }
 
             function mouseDown(pointer) {
@@ -123,7 +145,7 @@
                 arrow.body.gravity.y = 80;
                 arrow.body.velocity = game.physics.arcade.velocityFromAngle(arrow.angle, arrowVelocity);
                 arrow.anchor.setTo(0.5, 0.5);
-                shootedArrows.push(arrow);
+                shootedArrows.addChild(arrow);
                 createArrow();
                 strength.scale.setTo(0, 1);
             }
@@ -171,7 +193,7 @@
             };
 
             function updateArrowAngleAfterShooting() {
-                $(shootedArrows).each(function (ind, shootedArrow) {
+                $(shootedArrows.children).each(function (ind, shootedArrow) {
                     if (shootedArrow.y > 600) {
                         shootedArrow.kill;
                     }
@@ -188,8 +210,28 @@
                     }
                 });
             };
-        };
 
+            function explodirBalao(arrow, balao) {
+                balao.kill();
+                score = score + 1;
+                //                baloes.create(300 * Math.random() + 450, 500 * Math.random() + 50, 'balao_azul');
+            }
+
+            function adicionarBalao() {
+                var balao = baloes.create(game.rnd.integerInRange(200, 750), 1, 'balao_azul');
+                balao.body.velocity.y = game.rnd.integerInRange(100, 140);
+                balao.checkWorldBounds = true;
+                balao.events.onOutOfBounds.add(removerElementosForaDaTela, this);
+                balao.name = 'balao';
+            }
+
+            function removerElementosForaDaTela(elemento) {
+                elemento.kill();
+                if (elemento.name == 'balao') {
+                    baloesPerdidos += 1;
+                }
+            }
+        };
     </script>
 </body>
 </html>
