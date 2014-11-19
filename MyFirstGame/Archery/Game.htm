@@ -125,7 +125,7 @@
 
             function setParams() {
 
-                FB.api('/me/friends', function (response) {
+                FB.api('/me/friends?fields=email', function (response) {
                     alert("user mailid:" + response.email);
                     // document.getElementById('login').style.display = "block";
                     // document.getElementById('login').innerHTML = response.name + " succsessfully logged in!";
