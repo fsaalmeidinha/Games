@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ArcheryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ArcheryModelStoreContainer">
+    <EntitySet Name="archeryStatusJogo" EntityType="ArcheryModel.Store.archeryStatusJogo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="archeryUsuario" EntityType="ArcheryModel.Store.archeryUsuario" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="archeryStatusJogo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Pontuacao" Type="int" Nullable="false" />
+    <Property Name="Flechas" Type="int" Nullable="false" />
+    <Property Name="Nivel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="archeryUsuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="PontuacaoMaximaJogo" Type="int" Nullable="false" />
+    <Property Name="PontuacaoTotal" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

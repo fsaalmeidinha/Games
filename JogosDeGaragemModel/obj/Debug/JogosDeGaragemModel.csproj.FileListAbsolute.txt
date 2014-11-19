@@ -1,0 +1,5 @@
+D:\!job\Felipe\Games\JogosDeGaragemModel\bin\Debug\JogosDeGaragemModel.dll.config
+D:\!job\Felipe\Games\JogosDeGaragemModel\bin\Debug\JogosDeGaragemModel.dll
+D:\!job\Felipe\Games\JogosDeGaragemModel\bin\Debug\JogosDeGaragemModel.pdb
+D:\!job\Felipe\Games\JogosDeGaragemModel\obj\Debug\JogosDeGaragemModel.dll
+D:\!job\Felipe\Games\JogosDeGaragemModel\obj\Debug\JogosDeGaragemModel.pdb

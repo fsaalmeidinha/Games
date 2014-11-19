@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -119,10 +120,28 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archery\Actions\AtualizarStatusJogo.ashx.cs">
+      <DependentUpon>AtualizarStatusJogo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Archery\Actions\AtualizarUsuario.ashx.cs">
+      <DependentUpon>AtualizarUsuario.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Archery\Actions\RecuperarStatusJogo.ashx.cs">
+      <DependentUpon>RecuperarStatusJogo.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Archery\Actions\AtualizarUsuario.ashx" />
+    <Content Include="Archery\Actions\RecuperarStatusJogo.ashx" />
+    <Content Include="Archery\Actions\AtualizarStatusJogo.ashx" />
     <None Include="phaser\phaser.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JogosDeGaragemModel\JogosDeGaragemModel.csproj">
+      <Project>{D987AA8D-8F77-470B-818E-DFF5C218F647}</Project>
+      <Name>JogosDeGaragemModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

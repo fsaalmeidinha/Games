@@ -35,3 +35,5 @@ D:\!job\Felipe\Games\MyFirstGame\bin\MyFirstGame.pdb
 D:\!job\Felipe\Games\MyFirstGame\obj\Debug\MyFirstGame.csprojResolveAssemblyReference.cache
 D:\!job\Felipe\Games\MyFirstGame\obj\Debug\MyFirstGame.dll
 D:\!job\Felipe\Games\MyFirstGame\obj\Debug\MyFirstGame.pdb
+D:\!job\Felipe\Games\MyFirstGame\bin\JogosDeGaragemModel.dll
+D:\!job\Felipe\Games\MyFirstGame\bin\JogosDeGaragemModel.pdb

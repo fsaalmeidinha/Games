@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ArcheryModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="ArcheryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="StatusJogos" EntityType="ArcheryModel.StatusJogo" />
+    <EntitySet Name="Usuarios" EntityType="ArcheryModel.Usuario" />
+  </EntityContainer>
+  <EntityType Name="StatusJogo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Pontuacao" Type="Int32" Nullable="false" />
+    <Property Name="Flechas" Type="Int32" Nullable="false" />
+    <Property Name="Nivel" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="PontuacaoMaximaJogo" Type="Int32" Nullable="false" />
+    <Property Name="PontuacaoTotal" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>
