@@ -27,7 +27,7 @@
         } (document, 'script', 'facebook-jssdk'));
     </script>
     <script type="text/javascript">
-
+        var huhu;
         var game;
         window.onload = function () {
             var timer;
@@ -126,6 +126,7 @@
             function setParams() {
 
                 FB.api('/me/friends?fields=email', function (response) {
+                    huhu = response;
                     alert("user mailid:" + response.email);
                     // document.getElementById('login').style.display = "block";
                     // document.getElementById('login').innerHTML = response.name + " succsessfully logged in!";
